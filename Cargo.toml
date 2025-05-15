@@ -4,16 +4,42 @@ version = "0.1.0"
 edition = "2024"
 
 [dependencies]
-anyhow = "1.0.98"
-clap = { version = "4.5.38", features = ["derive"] }
+
+# This crate is used to decode extrinsics given the information in frame-metadata:
 frame-decode = "0.8.0"
+
+# This crate provides the information (metadata) needed to know how to decode extrinsics:
 frame-metadata = { version = "23.0.0", features = ["legacy"] }
-hex = "0.4.3"
+
+# Decode SCALE encoded bytes:
 parity-scale-codec = "3.7.4"
+
+# This provides a format for historic type information which can be used to decode historic types:
 scale-info-legacy = "0.2.2"
+
+# This provides the underlying trait used to resolve any SCALE type (we name this trait somewhere):
 scale-type-resolver = "0.2.0"
+
+# This provides a target to decode SCALE encoded bytes into which can be stringified etc:
 scale-value = "0.18.0"
-serde_yaml = "0.9.34"
+
+# This is used for a couple of core types (eg block header shape), to save us re-writing them:
 subxt-core = "0.42.1"
+
+# This is used to communicate to a substrate based RPC node to fetch the information we want:
 subxt-rpcs = { version = "0.42.1", features = ["subxt"] }
+
+# This is used to decode our YAML historic types file:
+serde_yaml = "0.9.34"
+
+# Encode strings to hex:
+hex = "0.4.3"
+
+# This allows us to use async:
 tokio = { version = "1.45.0", features = ["full"] }
+
+# For easy error output:
+anyhow = "1.0.98"
+
+# Makes it easy to build a CLI interface:
+clap = { version = "4.5.38", features = ["derive"] }
